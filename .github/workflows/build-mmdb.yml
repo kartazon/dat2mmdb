@@ -1,0 +1,59 @@
+name: build-mmdb
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 3 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+
+      - name: Install v2fly geoip
+        run: go install github.com/v2fly/geoip@latest
+
+      - name: Convert geoip.dat to text
+        run: |
+          cat > config.json <<'JSON'
+          [
+            {
+              "type": "v2rayGeoIPDat",
+              "action": "add",
+              "args": {
+                "uri": "./geoip.dat"
+              }
+            },
+            {
+              "type": "text",
+              "action": "output",
+              "args": {
+                "output": "./geoip.txt"
+              }
+            }
+          ]
+          JSON
+
+          ~/go/bin/geoip -c config.json
+
+      - name: Build MMDB
+        run: |
+          mkdir -p output
+          go run ./cmd/txt2mmdb -in ./geoip.txt -out ./output/geoip-country.mmdb
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: geoip-mmdb
+          path: output/*.mmdb

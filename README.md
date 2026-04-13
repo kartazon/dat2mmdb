@@ -15,12 +15,12 @@ Converts `geoip.dat` (v2fly/v2ray format) from [Ground-Zerro/Geo-Aggregator](htt
 3. `cmd/txt2mmdb` reads those files and writes a `GeoLite2-Country`-compatible `.mmdb` using [`mmdbwriter`](https://github.com/maxmind/mmdbwriter).
 4. GitHub Actions runs this pipeline automatically every 12 hours, or on manual trigger.
 
-All tags from `geoip.dat` are exported — both country codes (e.g. `CN`, `RU`, `US`) and custom categories (e.g. `TELEGRAM`, `NETFLIX`). This allows using arbitrary tags in Stash `GEOIP` rules:
+All tags from `geoip.dat` are exported — both country codes (e.g. `CN`, `RU`, `US`) and custom categories (e.g. `NETFLIX`). This allows using arbitrary tags in Stash `GEOIP` rules:
 
 ```
 GEOIP,CN,DIRECT
 GEOIP,RU,DIRECT
-GEOIP,TELEGRAM,proxy
+GEOIP,NETFLIX,proxy
 ```
 
 ### Repository structure
@@ -101,12 +101,12 @@ MIT
 3. `cmd/txt2mmdb` читает эти файлы и записывает `.mmdb` в формате `GeoLite2-Country` с помощью [`mmdbwriter`](https://github.com/maxmind/mmdbwriter).
 4. GitHub Actions запускает этот пайплайн автоматически каждые 12 часов или по ручному триггеру.
 
-В mmdb экспортируются **все теги** из `geoip.dat` — как коды стран (`CN`, `RU`, `US`), так и пользовательские категории (`TELEGRAM`, `NETFLIX` и др.). Это позволяет использовать произвольные теги в правилах `GEOIP` в Stash:
+В mmdb экспортируются **все теги** из `geoip.dat` — как коды стран (`CN`, `RU`, `US`), так и пользовательские категории (`NETFLIX` и др.). Это позволяет использовать произвольные теги в правилах `GEOIP` в Stash:
 
 ```
 GEOIP,CN,DIRECT
 GEOIP,RU,DIRECT
-GEOIP,TELEGRAM,proxy
+GEOIP,NETFLIX,proxy
 ```
 
 ### Структура репозитория

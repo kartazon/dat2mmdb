@@ -65,28 +65,28 @@ jobs:
           JSON
 
           ~/go/bin/geoip -c config.json
-          echo "Text files generated:"
-          ls text_output/ | head -20
+          echo "Text files generated: $(ls text_output/ | wc -l)"
 
       - name: Build MMDB
         run: |
-          mkdir -p output
-          go run ./cmd/txt2mmdb -indir ./text_output -out ./output/geoip-country.mmdb
+          mkdir -p output tmp
+          echo "Build started: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" > tmp/build.log
+          echo "geoip.dat size: $(wc -c < geoip.dat) bytes" >> tmp/build.log
+          echo "Text files: $(ls text_output/ | wc -l)" >> tmp/build.log
+          echo "---" >> tmp/build.log
+          go run ./cmd/txt2mmdb -indir ./text_output -out ./output/geoip-country.mmdb 2>> tmp/build.log
+          echo "---" >> tmp/build.log
+          echo "mmdb size: $(wc -c < ./output/geoip-country.mmdb) bytes" >> tmp/build.log
+          echo "Build finished: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> tmp/build.log
+          cat tmp/build.log
 
-      - name: Save text files to tmp/
-        run: |
-          rm -rf tmp
-          mkdir -p tmp
-          cp text_output/* tmp/
-          echo "Files in tmp/: $(ls tmp/ | wc -l)"
-
-      - name: Commit tmp/ to repository
+      - name: Commit tmp/build.log to repository
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add tmp/
+          git add tmp/build.log
           git diff --cached --quiet && echo "No changes to commit" || \
-            git commit -m "chore: update tmp/ text files [$(date -u +'%Y-%m-%d %H:%M UTC')]"
+            git commit -m "chore: update build.log [$(date -u +'%Y-%m-%d %H:%M UTC')]"
           git push
 
       - name: Upload artifact

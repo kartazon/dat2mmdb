@@ -1,18 +1,18 @@
 # dat2mmdb
 
-Converts [v2fly/geoip](https://github.com/v2fly/geoip) `geoip.dat` to a MaxMind-compatible `.mmdb` file suitable for use with [Stash](https://stash.wiki) and other tools that support the **MaxMind GeoIP format**.
+Converts `geoip.dat` (v2fly/v2ray format) from [Ground-Zerro/Geo-Aggregator](https://github.com/Ground-Zerro/Geo-Aggregator) to a MaxMind-compatible `.mmdb` file suitable for use with [Stash](https://stash.wiki) and other tools that support the **MaxMind GeoIP format**.
 
 ## How it works
 
-1. `geoip.dat` (v2ray/v2fly format) is parsed by the official `v2fly/geoip` tool into a text file with CIDR ranges per country tag.
-2. `cmd/txt2mmdb` reads that text and writes a `GeoLite2-Country`-compatible `.mmdb` using [`mmdbwriter`](https://github.com/maxmind/mmdbwriter).
-3. GitHub Actions runs this pipeline automatically every Monday at 03:00 UTC, or on manual trigger.
+1. `geoip.dat` is automatically downloaded from [Ground-Zerro/Geo-Aggregator](https://raw.githubusercontent.com/Ground-Zerro/Geo-Aggregator/main/geodat/geoip_GA.dat) — no manual upload needed.
+2. The file is parsed by the official [v2fly/geoip](https://github.com/v2fly/geoip) tool into a text file with CIDR ranges per country tag.
+3. `cmd/txt2mmdb` reads that text and writes a `GeoLite2-Country`-compatible `.mmdb` using [`mmdbwriter`](https://github.com/maxmind/mmdbwriter).
+4. GitHub Actions runs this pipeline automatically every Monday at 03:00 UTC, or on manual trigger.
 
 ## Repository structure
 
 ```
 .
-├── geoip.dat                        # Put your v2fly geoip.dat here
 ├── go.mod
 ├── cmd/
 │   └── txt2mmdb/
@@ -24,13 +24,23 @@ Converts [v2fly/geoip](https://github.com/v2fly/geoip) `geoip.dat` to a MaxMind-
 
 ## Usage
 
-### 1. Add geoip.dat
+### Run via GitHub Actions
 
-Place your `geoip.dat` file in the root of the repository. You can download the latest one from [v2fly/geoip releases](https://github.com/v2fly/geoip/releases).
+Go to **Actions → build-mmdb → Run workflow**.
 
-### 2. Run locally
+`geoip.dat` is fetched automatically from:
+```
+https://raw.githubusercontent.com/Ground-Zerro/Geo-Aggregator/main/geodat/geoip_GA.dat
+```
+
+The resulting `geoip-country.mmdb` will be available as a workflow artifact.
+
+### Run locally
 
 ```bash
+# Download geoip.dat
+curl -fsSL https://raw.githubusercontent.com/Ground-Zerro/Geo-Aggregator/main/geodat/geoip_GA.dat -o geoip.dat
+
 # Install v2fly geoip tool
 go install github.com/v2fly/geoip@latest
 
@@ -41,10 +51,6 @@ geoip -c config.json
 mkdir -p output
 go run ./cmd/txt2mmdb -in geoip.txt -out output/geoip-country.mmdb
 ```
-
-### 3. Run via GitHub Actions
-
-Go to **Actions → build-mmdb → Run workflow**. The resulting `.mmdb` will be available as a workflow artifact.
 
 ## Output MMDB schema
 

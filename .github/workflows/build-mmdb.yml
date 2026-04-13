@@ -9,7 +9,7 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -78,3 +78,23 @@ jobs:
         with:
           name: geoip-mmdb
           path: output/*.mmdb
+
+      - name: Generate release tag
+        id: tag
+        run: echo "name=$(date -u +'%Y%m%d-%H%M')" >> "$GITHUB_OUTPUT"
+
+      - name: Delete existing 'latest' release and tag
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release delete latest --yes --cleanup-tag 2>/dev/null || true
+
+      - name: Create Release and upload mmdb
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create latest \
+            --title "geoip-country.mmdb (${{ steps.tag.outputs.name }})" \
+            --notes "Auto-generated from [Ground-Zerro/Geo-Aggregator](https://github.com/Ground-Zerro/Geo-Aggregator) geoip_GA.dat on $(date -u +'%Y-%m-%d %H:%M UTC')" \
+            --latest \
+            output/geoip-country.mmdb

@@ -1,0 +1,23 @@
+name: cleanup-tmp
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Remove all .txt files from tmp/
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          find tmp/ -name "*.txt" -delete
+          git add -A
+          git diff --cached --quiet && echo "Nothing to remove" || \
+            git commit -m "chore: remove all .txt files from tmp/"
+          git push

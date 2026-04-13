@@ -63,16 +63,13 @@ jobs:
             ]
           }
           JSON
-
           ~/go/bin/geoip -c config.json
-          echo "Text files generated: $(ls text_output/ | wc -l)"
 
       - name: Build MMDB
         run: |
           mkdir -p output tmp
           echo "Build started: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" > tmp/build.log
           echo "geoip.dat size: $(wc -c < geoip.dat) bytes" >> tmp/build.log
-          echo "Text files: $(ls text_output/ | wc -l)" >> tmp/build.log
           echo "---" >> tmp/build.log
           go run ./cmd/txt2mmdb -indir ./text_output -out ./output/geoip-country.mmdb 2>> tmp/build.log
           echo "---" >> tmp/build.log

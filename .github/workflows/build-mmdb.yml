@@ -73,6 +73,22 @@ jobs:
           mkdir -p output
           go run ./cmd/txt2mmdb -indir ./text_output -out ./output/geoip-country.mmdb
 
+      - name: Save text files to tmp/
+        run: |
+          rm -rf tmp
+          mkdir -p tmp
+          cp text_output/* tmp/
+          echo "Files in tmp/: $(ls tmp/ | wc -l)"
+
+      - name: Commit tmp/ to repository
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add tmp/
+          git diff --cached --quiet && echo "No changes to commit" || \
+            git commit -m "chore: update tmp/ text files [$(date -u +'%Y-%m-%d %H:%M UTC')]"
+          git push
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:

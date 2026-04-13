@@ -14,6 +14,15 @@ import (
 	"github.com/maxmind/mmdbwriter/mmdbtype"
 )
 
+// allowedTags defines which non-ISO tags are written to the mmdb and their priority.
+// ISO 2-char country codes are always included with priority 0.
+// Higher priority wins on overlapping networks — written last in sorted order.
+var allowedTags = map[string]int{
+	"RU-WHITELIST": 100,
+	"RE-FILTER":    90,
+	"TELEGRAM":     80,
+}
+
 var countryNames = map[string]string{
 	"AD": "Andorra", "AE": "United Arab Emirates", "AF": "Afghanistan", "AG": "Antigua and Barbuda",
 	"AI": "Anguilla", "AL": "Albania", "AM": "Armenia", "AO": "Angola", "AQ": "Antarctica",
@@ -69,8 +78,15 @@ var countryNames = map[string]string{
 	"ZA": "South Africa", "ZM": "Zambia", "ZW": "Zimbabwe",
 }
 
+// tagEntry holds a tag name, its file path and resolved priority.
+type tagEntry struct {
+	tag      string
+	path     string
+	priority int
+}
+
 func main() {
-	inDir := flag.String("indir", "./text_output", "directory with per-country text files produced by v2fly/geoip")
+	inDir := flag.String("indir", "./text_output", "directory with per-tag text files produced by v2fly/geoip")
 	outFile := flag.String("out", "geoip-country.mmdb", "output mmdb path")
 	flag.Parse()
 
@@ -92,25 +108,47 @@ func main() {
 		log.Fatalf("read dir %s: %v", *inDir, err)
 	}
 
-	totalInserted := 0
-	totalSkipped := 0
+	// Collect accepted tags and assign priorities.
+	var isoTags []tagEntry
+	var customTags []tagEntry
 
 	for _, entry := range entries {
 		if entry.IsDir() {
 			continue
 		}
-
-		// filename is the country tag (e.g. "cn", "cn.txt")
 		name := entry.Name()
 		tag := strings.ToUpper(strings.TrimSuffix(name, filepath.Ext(name)))
 
+		// Skip reserved/private ranges.
 		if tag == "PRIVATE" || tag == "LAN" {
 			continue
 		}
 
-		inserted, skipped := processFile(writer, filepath.Join(*inDir, name), tag)
-		totalInserted += inserted
-		totalSkipped += skipped
+		if len(tag) == 2 {
+			// Standard ISO country code — priority 0.
+			isoTags = append(isoTags, tagEntry{tag: tag, path: filepath.Join(*inDir, name), priority: 0})
+		} else if p, ok := allowedTags[tag]; ok {
+			// Allowed custom tag with explicit priority.
+			customTags = append(customTags, tagEntry{tag: tag, path: filepath.Join(*inDir, name), priority: p})
+		}
+		// All other multi-char tags are silently ignored.
+	}
+
+	// Sort custom tags ascending by priority so highest-priority is written last
+	// and wins on overlapping networks (Insert overwrites previous value).
+	sortByPriority(customTags)
+
+	// Write order: ISO countries first (priority 0), then custom tags low→high.
+	all := append(isoTags, customTags...)
+
+	totalInserted := 0
+	totalSkipped := 0
+
+	for _, e := range all {
+		ins, skip := processFile(writer, e.path, e.tag)
+		totalInserted += ins
+		totalSkipped += skip
+		fmt.Fprintf(os.Stderr, "  tag=%-20s inserted=%d skipped=%d\n", e.tag, ins, skip)
 	}
 
 	if totalInserted == 0 {
@@ -128,6 +166,15 @@ func main() {
 	}
 
 	fmt.Fprintf(os.Stderr, "done: inserted=%d skipped=%d output=%s\n", totalInserted, totalSkipped, *outFile)
+}
+
+// sortByPriority sorts tagEntries ascending by priority (lowest first).
+func sortByPriority(tags []tagEntry) {
+	for i := 1; i < len(tags); i++ {
+		for j := i; j > 0 && tags[j].priority < tags[j-1].priority; j-- {
+			tags[j], tags[j-1] = tags[j-1], tags[j]
+		}
+	}
 }
 
 func processFile(writer *mmdbwriter.Tree, path, tag string) (inserted, skipped int) {

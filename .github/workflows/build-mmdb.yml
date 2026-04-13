@@ -16,6 +16,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Download geoip.dat
+        run: |
+          curl -fsSL \
+            https://raw.githubusercontent.com/Ground-Zerro/Geo-Aggregator/main/geodat/geoip_GA.dat \
+            -o geoip.dat
+          echo "geoip.dat size: $(wc -c < geoip.dat) bytes"
+
       - name: Setup Go
         uses: actions/setup-go@v5
         with:

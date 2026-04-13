@@ -40,31 +40,38 @@ jobs:
 
       - name: Convert geoip.dat to text
         run: |
-          cat > config.json <<'JSON'
-          [
-            {
-              "type": "v2rayGeoIPDat",
-              "action": "add",
-              "args": {
-                "uri": "./geoip.dat"
+          mkdir -p text_output
+          cat > config.json << 'JSON'
+          {
+            "input": [
+              {
+                "type": "v2rayGeoIPDat",
+                "action": "add",
+                "args": {
+                  "uri": "./geoip.dat"
+                }
               }
-            },
-            {
-              "type": "text",
-              "action": "output",
-              "args": {
-                "output": "./geoip.txt"
+            ],
+            "output": [
+              {
+                "type": "text",
+                "action": "output",
+                "args": {
+                  "outputDir": "./text_output"
+                }
               }
-            }
-          ]
+            ]
+          }
           JSON
 
           ~/go/bin/geoip -c config.json
+          echo "Text files generated:"
+          ls text_output/ | head -20
 
       - name: Build MMDB
         run: |
           mkdir -p output
-          go run ./cmd/txt2mmdb -in ./geoip.txt -out ./output/geoip-country.mmdb
+          go run ./cmd/txt2mmdb -indir ./text_output -out ./output/geoip-country.mmdb
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4

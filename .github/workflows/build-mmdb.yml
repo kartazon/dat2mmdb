@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: "0 3 * * 1"
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 permissions:
   contents: read
 
@@ -16,6 +19,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+          cache: false
+
       - name: Download geoip.dat
         run: |
           curl -fsSL \
@@ -23,13 +32,11 @@ jobs:
             -o geoip.dat
           echo "geoip.dat size: $(wc -c < geoip.dat) bytes"
 
-      - name: Setup Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: '1.23'
-
       - name: Install v2fly geoip
         run: go install github.com/v2fly/geoip@latest
+
+      - name: Resolve Go dependencies
+        run: go mod tidy
 
       - name: Convert geoip.dat to text
         run: |

@@ -40,7 +40,7 @@ jobs:
 
       - name: Convert geoip.dat to text
         run: |
-          mkdir -p text_output
+          mkdir -p tmp
           cat > config.json << 'JSON'
           {
             "input": [
@@ -57,7 +57,7 @@ jobs:
                 "type": "text",
                 "action": "output",
                 "args": {
-                  "outputDir": "./text_output"
+                  "outputDir": "./tmp"
                 }
               }
             ]
@@ -67,15 +67,22 @@ jobs:
 
       - name: Build MMDB
         run: |
-          mkdir -p output tmp
+          mkdir -p output
           echo "Build started: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" > tmp/build.log
           echo "geoip.dat size: $(wc -c < geoip.dat) bytes" >> tmp/build.log
           echo "---" >> tmp/build.log
-          go run ./cmd/txt2mmdb -indir ./text_output -out ./output/geoip-country.mmdb 2>> tmp/build.log
+          go run ./cmd/txt2mmdb \
+            -indir  ./tmp \
+            -config ./mmdb-config.ini \
+            -out    ./output/geoip-country.mmdb \
+            2>> tmp/build.log
           echo "---" >> tmp/build.log
           echo "mmdb size: $(wc -c < ./output/geoip-country.mmdb) bytes" >> tmp/build.log
           echo "Build finished: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> tmp/build.log
           cat tmp/build.log
+
+      - name: Cleanup tmp txt files
+        run: find tmp/ -name "*.txt" -delete
 
       - name: Commit tmp/build.log to repository
         run: |

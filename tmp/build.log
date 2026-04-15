@@ -1,13 +1,13 @@
-Build started: 2026-04-15 02:47:39 UTC
-geoip.dat size: 38664302 bytes
+Build started: 2026-04-15 13:44:47 UTC
+geoip.dat size: 38781924 bytes
 ---
 go: downloading go1.24.0 (linux/amd64)
 --- Export plan (ascending priority, highest wins) ---
   [priority= 80] tag=TELEGRAM                  inserted=12 skipped=0
-  [priority= 85] tag=ANTIFILTER-COMMUNITY      inserted=885 skipped=0
+  [priority= 85] tag=ANTIFILTER-COMMUNITY      inserted=896 skipped=0
   [priority= 90] tag=RE-FILTER                 inserted=36616 skipped=0
   [priority=100] tag=RU-WHITELIST              inserted=30189 skipped=0
 done → ./output/geoip-country.mmdb
 ---
-mmdb size: 1771344 bytes
-Build finished: 2026-04-15 02:47:51 UTC
+mmdb size: 1770287 bytes
+Build finished: 2026-04-15 13:44:59 UTC

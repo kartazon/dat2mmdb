@@ -41,15 +41,12 @@ jobs:
 
           echo "==> Downloading ${EDITION}"
 
-          # -L — следовать редиректам (MaxMind делает 302 на S3)
-          # -w "%{http_code}" — код реального ответа после всех редиректов
           HTTP_CODE=$(curl -sSL -w "%{http_code}" \
             -u "${MM_ACCOUNT_ID}:${MM_LICENSE_KEY}" \
             "${BASE_URL}?suffix=tar.gz" \
             -o "${EDITION}.tar.gz")
           if [ "${HTTP_CODE}" != "200" ]; then
             echo "ERROR: HTTP ${HTTP_CODE} downloading ${EDITION}.tar.gz"
-            echo "Response body:"
             cat "${EDITION}.tar.gz"
             exit 1
           fi
@@ -78,12 +75,24 @@ jobs:
           fi
           echo "OK: SHA256 verified (${EXPECTED})"
 
-          # Распаковываем только .mmdb
+          # Показываем содержимое архива для отладки
+          echo "==> Archive contents:"
+          tar -tzf "${EDITION}.tar.gz"
+
+          # Находим точный путь к .mmdb внутри архива (без wildcards)
+          MMDB_PATH=$(tar -tzf "${EDITION}.tar.gz" | grep "\.mmdb$" | head -1)
+          if [ -z "${MMDB_PATH}" ]; then
+            echo "ERROR: .mmdb file not found in archive"
+            exit 1
+          fi
+          echo "==> Found: ${MMDB_PATH}"
+
+          # Распаковываем только .mmdb по точному пути
           mkdir -p "${FOLDER}"
           tar -xzf "${EDITION}.tar.gz" \
             --strip-components=1 \
-            --wildcards "*/${EDITION}.mmdb" \
-            -C "${FOLDER}"
+            -C "${FOLDER}" \
+            "${MMDB_PATH}"
 
           cp "${EDITION}.tar.gz.sha256" "${FOLDER}/${EDITION}.mmdb.sha256"
 
@@ -94,8 +103,17 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add "${{ matrix.folder }}/"
-          git diff --cached --quiet \
-            && echo "No changes for ${{ matrix.edition }}" \
-            || git commit -m "chore: update ${{ matrix.edition }} [$(date -u +'%Y-%m-%d %H:%M UTC')]"
-          git pull --rebase origin main
-          git push
+
+          if git diff --cached --quiet; then
+            echo "No changes for ${{ matrix.edition }}"
+          else
+            git commit -m "chore: update ${{ matrix.edition }} [$(date -u +'%Y-%m-%d %H:%M UTC')]"
+
+            # Retry loop на случай race condition при параллельных джобах
+            for i in 1 2 3 4 5; do
+              echo "==> Push attempt ${i}"
+              git pull --rebase origin main && git push && break
+              echo "Push failed, retrying in ${i}0s..."
+              sleep $((i * 10))
+            done
+          fi

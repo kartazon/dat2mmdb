@@ -14,8 +14,9 @@ permissions:
 jobs:
   download:
     runs-on: ubuntu-latest
-
+    # не отменять остальные jobs если одна упала
     strategy:
+      fail-fast: false
       matrix:
         include:
           - edition: GeoLite2-ASN
@@ -37,28 +38,45 @@ jobs:
           EDITION="${{ matrix.edition }}"
           FOLDER="${{ matrix.folder }}"
           BASE_URL="https://download.maxmind.com/app/geoip_download_by_token"
+          # MaxMind требует параметр date= (YYYYMMDD)
+          DATE="$(date -u +'%Y%m%d')"
 
-          echo "==> Downloading ${EDITION}"
+          echo "==> Downloading ${EDITION} (date=${DATE})"
 
-          # Скачиваем архив и sha256
-          curl -fsSL "${BASE_URL}?edition_id=${EDITION}&suffix=tar.gz&token=${MM_TOKEN}" \
-            -o "${EDITION}.tar.gz"
-          curl -fsSL "${BASE_URL}?edition_id=${EDITION}&suffix=tar.gz.sha256&token=${MM_TOKEN}" \
-            -o "${EDITION}.tar.gz.sha256"
+          # Скачиваем архив — выводим HTTP-статус при ошибке
+          HTTP_CODE=$(curl -sS -w "%{http_code}" \
+            "${BASE_URL}?date=${DATE}&edition_id=${EDITION}&suffix=tar.gz&token=${MM_TOKEN}" \
+            -o "${EDITION}.tar.gz")
+          if [ "${HTTP_CODE}" != "200" ]; then
+            echo "ERROR: HTTP ${HTTP_CODE} downloading ${EDITION}.tar.gz"
+            echo "Response body:"
+            cat "${EDITION}.tar.gz"
+            exit 1
+          fi
+
+          # Скачиваем sha256
+          HTTP_CODE=$(curl -sS -w "%{http_code}" \
+            "${BASE_URL}?date=${DATE}&edition_id=${EDITION}&suffix=tar.gz.sha256&token=${MM_TOKEN}" \
+            -o "${EDITION}.tar.gz.sha256")
+          if [ "${HTTP_CODE}" != "200" ]; then
+            echo "ERROR: HTTP ${HTTP_CODE} downloading ${EDITION}.tar.gz.sha256"
+            cat "${EDITION}.tar.gz.sha256"
+            exit 1
+          fi
 
           # Проверяем sha256
           echo "==> Verifying SHA256 for ${EDITION}"
           EXPECTED=$(awk '{print $1}' "${EDITION}.tar.gz.sha256")
           ACTUAL=$(sha256sum "${EDITION}.tar.gz" | awk '{print $1}')
           if [ "${EXPECTED}" != "${ACTUAL}" ]; then
-            echo "ERROR: SHA256 mismatch for ${EDITION}!"
+            echo "ERROR: SHA256 mismatch!"
             echo "  expected: ${EXPECTED}"
             echo "  actual:   ${ACTUAL}"
             exit 1
           fi
-          echo "OK: SHA256 verified"
+          echo "OK: SHA256 verified (${EXPECTED})"
 
-          # Распаковываем — внутри tar.gz есть папка вида GeoLite2-ASN_20260415/
+          # Распаковываем — внутри tar.gz папка вида GeoLite2-ASN_20260415/
           mkdir -p "${FOLDER}"
           tar -xzf "${EDITION}.tar.gz" \
             --strip-components=1 \
@@ -68,13 +86,16 @@ jobs:
           # Сохраняем sha256 рядом с mmdb
           cp "${EDITION}.tar.gz.sha256" "${FOLDER}/${EDITION}.mmdb.sha256"
 
-          echo "==> ${EDITION}.mmdb size: $(wc -c < ${FOLDER}/${EDITION}.mmdb) bytes"
+          echo "==> ${EDITION}.mmdb — $(wc -c < ${FOLDER}/${EDITION}.mmdb) bytes"
 
       - name: Commit updated database
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add "${{ matrix.folder }}/"
-          git diff --cached --quiet && echo "No changes for ${{ matrix.edition }}" || \
-            git commit -m "chore: update ${{ matrix.edition }} [$(date -u +'%Y-%m-%d %H:%M UTC')]"
+          git diff --cached --quiet \
+            && echo "No changes for ${{ matrix.edition }}" \
+            || git commit -m "chore: update ${{ matrix.edition }} [$(date -u +'%Y-%m-%d %H:%M UTC')]"
+          # pull --rebase на случай параллельных коммитов из других matrix jobs
+          git pull --rebase origin main
           git push

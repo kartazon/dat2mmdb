@@ -14,7 +14,6 @@ permissions:
 jobs:
   download:
     runs-on: ubuntu-latest
-    # не отменять остальные jobs если одна упала
     strategy:
       fail-fast: false
       matrix:
@@ -32,20 +31,20 @@ jobs:
 
       - name: Download ${{ matrix.edition }}
         env:
-          MM_TOKEN: ${{ secrets.MAXMIND_TOKEN }}
+          MM_ACCOUNT_ID:  ${{ secrets.MAXMIND_ACCOUNT_ID }}
+          MM_LICENSE_KEY: ${{ secrets.MAXMIND_LICENSE_KEY }}
         run: |
           set -euo pipefail
           EDITION="${{ matrix.edition }}"
           FOLDER="${{ matrix.folder }}"
-          BASE_URL="https://download.maxmind.com/app/geoip_download_by_token"
-          # MaxMind требует параметр date= (YYYYMMDD)
-          DATE="$(date -u +'%Y%m%d')"
+          BASE_URL="https://download.maxmind.com/geoip/databases/${EDITION}/download"
 
-          echo "==> Downloading ${EDITION} (date=${DATE})"
+          echo "==> Downloading ${EDITION}"
 
-          # Скачиваем архив — выводим HTTP-статус при ошибке
+          # Скачиваем архив через Basic Auth (Account ID : License Key)
           HTTP_CODE=$(curl -sS -w "%{http_code}" \
-            "${BASE_URL}?date=${DATE}&edition_id=${EDITION}&suffix=tar.gz&token=${MM_TOKEN}" \
+            -u "${MM_ACCOUNT_ID}:${MM_LICENSE_KEY}" \
+            "${BASE_URL}?suffix=tar.gz" \
             -o "${EDITION}.tar.gz")
           if [ "${HTTP_CODE}" != "200" ]; then
             echo "ERROR: HTTP ${HTTP_CODE} downloading ${EDITION}.tar.gz"
@@ -53,10 +52,12 @@ jobs:
             cat "${EDITION}.tar.gz"
             exit 1
           fi
+          echo "OK: archive downloaded ($(wc -c < ${EDITION}.tar.gz) bytes)"
 
           # Скачиваем sha256
           HTTP_CODE=$(curl -sS -w "%{http_code}" \
-            "${BASE_URL}?date=${DATE}&edition_id=${EDITION}&suffix=tar.gz.sha256&token=${MM_TOKEN}" \
+            -u "${MM_ACCOUNT_ID}:${MM_LICENSE_KEY}" \
+            "${BASE_URL}?suffix=tar.gz.sha256" \
             -o "${EDITION}.tar.gz.sha256")
           if [ "${HTTP_CODE}" != "200" ]; then
             echo "ERROR: HTTP ${HTTP_CODE} downloading ${EDITION}.tar.gz.sha256"
@@ -76,7 +77,7 @@ jobs:
           fi
           echo "OK: SHA256 verified (${EXPECTED})"
 
-          # Распаковываем — внутри tar.gz папка вида GeoLite2-ASN_20260415/
+          # Распаковываем только .mmdb из архива
           mkdir -p "${FOLDER}"
           tar -xzf "${EDITION}.tar.gz" \
             --strip-components=1 \
@@ -96,6 +97,5 @@ jobs:
           git diff --cached --quiet \
             && echo "No changes for ${{ matrix.edition }}" \
             || git commit -m "chore: update ${{ matrix.edition }} [$(date -u +'%Y-%m-%d %H:%M UTC')]"
-          # pull --rebase на случай параллельных коммитов из других matrix jobs
           git pull --rebase origin main
           git push

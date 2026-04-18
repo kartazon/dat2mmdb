@@ -1,4 +1,4 @@
-Build started: 2026-04-17 13:26:06 UTC
+Build started: 2026-04-18 02:40:53 UTC
 geoip.dat size: 37740610 bytes
 ---
 go: downloading go1.24.0 (linux/amd64)
@@ -10,4 +10,4 @@ go: downloading go1.24.0 (linux/amd64)
 done → ./output/geoip-country.mmdb
 ---
 mmdb size: 1770322 bytes
-Build finished: 2026-04-17 13:26:18 UTC
+Build finished: 2026-04-18 02:41:02 UTC

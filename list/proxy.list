@@ -1,9 +1,25 @@
+# special
+DOMAIN-KEYWORD,4pda
+DOMAIN-KEYWORD,canva
+DOMAIN-KEYWORD,chatgpt
+DOMAIN-KEYWORD,discord
+DOMAIN-KEYWORD,flibusta
+DOMAIN-KEYWORD,hdrezka
+DOMAIN-KEYWORD,instagram
+DOMAIN-KEYWORD,kahoot
+DOMAIN-KEYWORD,kinozal
+DOMAIN-KEYWORD,notion
+DOMAIN-KEYWORD,rezka
+DOMAIN-KEYWORD,rutor
+DOMAIN-KEYWORD,rutracker
+DOMAIN-KEYWORD,supercell
+DOMAIN-KEYWORD,threads
+DOMAIN-KEYWORD,whatsapp
 DOMAIN-KEYWORD,autodesk
 DOMAIN-KEYWORD,nnmclub
-DOMAIN-KEYWORD,rutracker
-DOMAIN-KEYWORD,kinozal
 DOMAIN-KEYWORD,medium
 DOMAIN-KEYWORD,redis
+DOMAIN-SUFFIX,ntc.party
 
 # PornHub
 DOMAIN-KEYWORD,pornhub
@@ -14,3 +30,63 @@ DOMAIN-KEYWORD,xvideos
 DOMAIN-KEYWORD,speedtest
 DOMAIN-SUFFIX,ooklaserver.net
 DOMAIN-SUFFIX,cdnst.net
+DOMAIN-SUFFIX,speedtest.net
+
+# other
+DOMAIN-SUFFIX,cub.red
+DOMAIN-SUFFIX,dyson.com
+DOMAIN-SUFFIX,hackernoon.com
+OMAIN-SUFFIX,skladchik.com
+DOMAIN-SUFFIX,skladchina.biz
+
+# tools
+DOMAIN-SUFFIX,aol.com
+DOMAIN-SUFFIX,api2.support-kp.com
+DOMAIN-SUFFIX,canva.dev
+DOMAIN-SUFFIX,cloudflare.com
+DOMAIN-SUFFIX,digitalocean.com
+DOMAIN-SUFFIX,harvestapp.com
+DOMAIN-SUFFIX,hostinger.com
+DOMAIN-SUFFIX,intel.com
+DOMAIN-SUFFIX,jetbrains.com
+DOMAIN-SUFFIX,mixcloud.com
+DOMAIN-SUFFIX,netpeaksoftware.com
+DOMAIN-SUFFIX,notionusercontent.com
+DOMAIN-SUFFIX,proton.me
+DOMAIN-SUFFIX,realguide.com
+DOMAIN-SUFFIX,redislabs.com
+DOMAIN-SUFFIX,semrush.com
+DOMAIN-SUFFIX,setapp.com
+DOMAIN-SUFFIX,splunkcloud.com
+DOMAIN-SUFFIX,x-minus.pro
+
+# ai
+DOMAIN-SUFFIX,anthropic.com
+DOMAIN-SUFFIX,apple-relay.apple.com
+DOMAIN-SUFFIX,claude.ai
+DOMAIN-SUFFIX,composer.opera-api.com
+DOMAIN-SUFFIX,copilot.microsoft.com
+DOMAIN-SUFFIX,deepl.com
+DOMAIN-SUFFIX,elevenlabs.io
+DOMAIN-SUFFIX,grok.com
+DOMAIN-SUFFIX,manus.im
+DOMAIN-SUFFIX,openai.com
+DOMAIN-SUFFIX,searchgpt.com
+DOMAIN-SUFFIX,sora.com
+DOMAIN-SUFFIX,x.ai
+
+# games
+
+# network
+DOMAIN-SUFFIX,browserleaks.com
+DOMAIN-SUFFIX,ifconfig.me
+DOMAIN-SUFFIX,ipinfo.io
+DOMAIN-SUFFIX,maxmind.com
+
+# analytics
+DOMAIN-SUFFIX,datacamp.com
+DOMAIN-SUFFIX,redis.io
+DOMAIN-SUFFIX,tableau.com
+DOMAIN-SUFFIX,tableausoftware.com
+DOMAIN-SUFFIX,tableauusercontent.com
+

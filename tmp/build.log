@@ -1,4 +1,4 @@
-Build started: 2026-06-02 16:38:20 UTC
+Build started: 2026-06-03 04:24:23 UTC
 geoip.dat size: 37948260 bytes
 ---
 go: downloading go1.24.0 (linux/amd64)
@@ -262,4 +262,4 @@ WARN: priority 1 is shared by [AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA B
 done → ./output/geoip-country.mmdb
 ---
 mmdb size: 10202658 bytes
-Build finished: 2026-06-02 16:38:39 UTC
+Build finished: 2026-06-03 04:24:43 UTC

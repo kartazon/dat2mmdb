@@ -1,5 +1,5 @@
-Build started: 2026-08-27 08:11:03 UTC
-geoip.dat size: 35764579 bytes
+Build started: 2026-08-27 21:57:36 UTC
+geoip.dat size: 35763665 bytes
 ---
 go: downloading go1.24.0 (linux/amd64)
 WARN: priority 1 is shared by [AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS XK YE YT ZA ZM ZW ZZ] — alphabetically first (AE) will win on conflict
@@ -253,13 +253,13 @@ WARN: priority 1 is shared by [AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA B
   [priority=  1] tag=AG                        inserted=323 skipped=0
   [priority=  1] tag=AF                        inserted=832 skipped=0
   [priority=  1] tag=AE                        inserted=6601 skipped=0
-  [priority= 70] tag=FASTLY                    inserted=91 skipped=0
-  [priority= 75] tag=CLOUDFLARE                inserted=701 skipped=0
+  [priority= 70] tag=FASTLY                    inserted=90 skipped=0
+  [priority= 75] tag=CLOUDFLARE                inserted=694 skipped=0
   [priority= 76] tag=CLOUDFRONT                inserted=211 skipped=0
   [priority= 80] tag=TELEGRAM                  inserted=12 skipped=0
   [priority= 90] tag=RE-FILTER                 inserted=24961 skipped=0
   [priority=100] tag=RU-WHITELIST              inserted=30222 skipped=0
 done → ./output/geoip-country.mmdb
 ---
-mmdb size: 10330065 bytes
-Build finished: 2026-08-27 08:11:22 UTC
+mmdb size: 10330016 bytes
+Build finished: 2026-08-27 21:57:54 UTC

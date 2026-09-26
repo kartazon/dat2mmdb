@@ -1,51 +1,51 @@
-Build started: 2026-09-26 04:06:31 UTC
-geoip.dat size: 35957382 bytes
+Build started: 2026-09-26 16:00:36 UTC
+geoip.dat size: 35342780 bytes
 ---
 go: downloading go1.24.0 (linux/amd64)
 WARN: priority 1 is shared by [AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS XK YE YT ZA ZM ZW ZZ] — alphabetically first (AE) will win on conflict
 --- Export plan (ascending priority, highest wins) ---
   [priority=  1] tag=ZZ                        inserted=5 skipped=0
-  [priority=  1] tag=ZW                        inserted=447 skipped=0
+  [priority=  1] tag=ZW                        inserted=442 skipped=0
   [priority=  1] tag=ZM                        inserted=346 skipped=0
-  [priority=  1] tag=ZA                        inserted=8957 skipped=0
-  [priority=  1] tag=YT                        inserted=147 skipped=0
+  [priority=  1] tag=ZA                        inserted=8759 skipped=0
+  [priority=  1] tag=YT                        inserted=151 skipped=0
   [priority=  1] tag=YE                        inserted=246 skipped=0
   [priority=  1] tag=XK                        inserted=232 skipped=0
   [priority=  1] tag=WS                        inserted=161 skipped=0
   [priority=  1] tag=WF                        inserted=104 skipped=0
-  [priority=  1] tag=VU                        inserted=309 skipped=0
+  [priority=  1] tag=VU                        inserted=328 skipped=0
   [priority=  1] tag=VN                        inserted=4046 skipped=0
-  [priority=  1] tag=VI                        inserted=408 skipped=0
-  [priority=  1] tag=VG                        inserted=689 skipped=0
-  [priority=  1] tag=VE                        inserted=1926 skipped=0
-  [priority=  1] tag=VC                        inserted=183 skipped=0
+  [priority=  1] tag=VI                        inserted=380 skipped=0
+  [priority=  1] tag=VG                        inserted=685 skipped=0
+  [priority=  1] tag=VE                        inserted=1923 skipped=0
+  [priority=  1] tag=VC                        inserted=178 skipped=0
   [priority=  1] tag=VA                        inserted=209 skipped=0
-  [priority=  1] tag=UZ                        inserted=870 skipped=0
+  [priority=  1] tag=UZ                        inserted=869 skipped=0
   [priority=  1] tag=UY                        inserted=528 skipped=0
-  [priority=  1] tag=US                        inserted=282519 skipped=0
-  [priority=  1] tag=UM                        inserted=97 skipped=0
-  [priority=  1] tag=UG                        inserted=445 skipped=0
-  [priority=  1] tag=UA                        inserted=8736 skipped=0
-  [priority=  1] tag=TZ                        inserted=698 skipped=0
-  [priority=  1] tag=TW                        inserted=5819 skipped=0
+  [priority=  1] tag=US                        inserted=281180 skipped=0
+  [priority=  1] tag=UM                        inserted=96 skipped=0
+  [priority=  1] tag=UG                        inserted=446 skipped=0
+  [priority=  1] tag=UA                        inserted=8706 skipped=0
+  [priority=  1] tag=TZ                        inserted=695 skipped=0
+  [priority=  1] tag=TW                        inserted=5810 skipped=0
   [priority=  1] tag=TV                        inserted=159 skipped=0
-  [priority=  1] tag=TT                        inserted=343 skipped=0
-  [priority=  1] tag=TR                        inserted=7072 skipped=0
+  [priority=  1] tag=TT                        inserted=340 skipped=0
+  [priority=  1] tag=TR                        inserted=7064 skipped=0
   [priority=  1] tag=TO                        inserted=144 skipped=0
   [priority=  1] tag=TN                        inserted=345 skipped=0
   [priority=  1] tag=TM                        inserted=191 skipped=0
   [priority=  1] tag=TL                        inserted=198 skipped=0
   [priority=  1] tag=TK                        inserted=122 skipped=0
   [priority=  1] tag=TJ                        inserted=324 skipped=0
-  [priority=  1] tag=TH                        inserted=4584 skipped=0
-  [priority=  1] tag=TG                        inserted=176 skipped=0
+  [priority=  1] tag=TH                        inserted=3865 skipped=0
+  [priority=  1] tag=TG                        inserted=175 skipped=0
   [priority=  1] tag=TF                        inserted=38 skipped=0
   [priority=  1] tag=TD                        inserted=190 skipped=0
-  [priority=  1] tag=TC                        inserted=146 skipped=0
+  [priority=  1] tag=TC                        inserted=144 skipped=0
   [priority=  1] tag=SZ                        inserted=183 skipped=0
-  [priority=  1] tag=SY                        inserted=500 skipped=0
-  [priority=  1] tag=SX                        inserted=125 skipped=0
-  [priority=  1] tag=SV                        inserted=553 skipped=0
+  [priority=  1] tag=SY                        inserted=499 skipped=0
+  [priority=  1] tag=SX                        inserted=123 skipped=0
+  [priority=  1] tag=SV                        inserted=550 skipped=0
   [priority=  1] tag=ST                        inserted=146 skipped=0
   [priority=  1] tag=SS                        inserted=215 skipped=0
   [priority=  1] tag=SR                        inserted=204 skipped=0
@@ -53,76 +53,76 @@ WARN: priority 1 is shared by [AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA B
   [priority=  1] tag=SN                        inserted=283 skipped=0
   [priority=  1] tag=SM                        inserted=179 skipped=0
   [priority=  1] tag=SL                        inserted=227 skipped=0
-  [priority=  1] tag=SK                        inserted=2066 skipped=0
+  [priority=  1] tag=SK                        inserted=2061 skipped=0
   [priority=  1] tag=SJ                        inserted=60 skipped=0
-  [priority=  1] tag=SI                        inserted=1637 skipped=0
+  [priority=  1] tag=SI                        inserted=1644 skipped=0
   [priority=  1] tag=SH                        inserted=78 skipped=0
-  [priority=  1] tag=SG                        inserted=21490 skipped=0
-  [priority=  1] tag=SE                        inserted=14104 skipped=0
+  [priority=  1] tag=SG                        inserted=21461 skipped=0
+  [priority=  1] tag=SE                        inserted=14095 skipped=0
   [priority=  1] tag=SD                        inserted=228 skipped=0
-  [priority=  1] tag=SC                        inserted=5078 skipped=0
+  [priority=  1] tag=SC                        inserted=5054 skipped=0
   [priority=  1] tag=SB                        inserted=163 skipped=0
-  [priority=  1] tag=SA                        inserted=2899 skipped=0
+  [priority=  1] tag=SA                        inserted=2898 skipped=0
   [priority=  1] tag=RW                        inserted=264 skipped=0
-  [priority=  1] tag=RU                        inserted=27813 skipped=0
-  [priority=  1] tag=RS                        inserted=1504 skipped=0
-  [priority=  1] tag=RO                        inserted=6157 skipped=0
-  [priority=  1] tag=RE                        inserted=407 skipped=0
-  [priority=  1] tag=QA                        inserted=901 skipped=0
-  [priority=  1] tag=PY                        inserted=763 skipped=0
+  [priority=  1] tag=RU                        inserted=27841 skipped=0
+  [priority=  1] tag=RS                        inserted=1502 skipped=0
+  [priority=  1] tag=RO                        inserted=6151 skipped=0
+  [priority=  1] tag=RE                        inserted=414 skipped=0
+  [priority=  1] tag=QA                        inserted=810 skipped=0
+  [priority=  1] tag=PY                        inserted=765 skipped=0
   [priority=  1] tag=PW                        inserted=139 skipped=0
-  [priority=  1] tag=PT                        inserted=4026 skipped=0
+  [priority=  1] tag=PT                        inserted=4025 skipped=0
   [priority=  1] tag=PS                        inserted=672 skipped=0
-  [priority=  1] tag=PR                        inserted=1943 skipped=0
+  [priority=  1] tag=PR                        inserted=1947 skipped=0
   [priority=  1] tag=PN                        inserted=46 skipped=0
   [priority=  1] tag=PM                        inserted=143 skipped=0
-  [priority=  1] tag=PL                        inserted=17851 skipped=0
-  [priority=  1] tag=PK                        inserted=2303 skipped=0
-  [priority=  1] tag=PH                        inserted=3971 skipped=0
+  [priority=  1] tag=PL                        inserted=17865 skipped=0
+  [priority=  1] tag=PK                        inserted=2308 skipped=0
+  [priority=  1] tag=PH                        inserted=3861 skipped=0
   [priority=  1] tag=PG                        inserted=441 skipped=0
   [priority=  1] tag=PF                        inserted=301 skipped=0
-  [priority=  1] tag=PE                        inserted=2392 skipped=0
-  [priority=  1] tag=PA                        inserted=1322 skipped=0
+  [priority=  1] tag=PE                        inserted=2266 skipped=0
+  [priority=  1] tag=PA                        inserted=1318 skipped=0
   [priority=  1] tag=OM                        inserted=798 skipped=0
-  [priority=  1] tag=NZ                        inserted=5020 skipped=0
+  [priority=  1] tag=NZ                        inserted=5000 skipped=0
   [priority=  1] tag=NU                        inserted=116 skipped=0
   [priority=  1] tag=NR                        inserted=133 skipped=0
-  [priority=  1] tag=NP                        inserted=833 skipped=0
-  [priority=  1] tag=NO                        inserted=5223 skipped=0
-  [priority=  1] tag=NL                        inserted=175715 skipped=0
-  [priority=  1] tag=NI                        inserted=348 skipped=0
-  [priority=  1] tag=NG                        inserted=1836 skipped=0
+  [priority=  1] tag=NP                        inserted=831 skipped=0
+  [priority=  1] tag=NO                        inserted=5121 skipped=0
+  [priority=  1] tag=NL                        inserted=175200 skipped=0
+  [priority=  1] tag=NI                        inserted=345 skipped=0
+  [priority=  1] tag=NG                        inserted=1838 skipped=0
   [priority=  1] tag=NF                        inserted=120 skipped=0
   [priority=  1] tag=NE                        inserted=212 skipped=0
   [priority=  1] tag=NC                        inserted=214 skipped=0
-  [priority=  1] tag=NA                        inserted=362 skipped=0
+  [priority=  1] tag=NA                        inserted=363 skipped=0
   [priority=  1] tag=MZ                        inserted=343 skipped=0
-  [priority=  1] tag=MY                        inserted=4581 skipped=0
-  [priority=  1] tag=MX                        inserted=7414 skipped=0
+  [priority=  1] tag=MY                        inserted=4579 skipped=0
+  [priority=  1] tag=MX                        inserted=7405 skipped=0
   [priority=  1] tag=MW                        inserted=261 skipped=0
   [priority=  1] tag=MV                        inserted=275 skipped=0
   [priority=  1] tag=MU                        inserted=9706 skipped=0
-  [priority=  1] tag=MT                        inserted=645 skipped=0
-  [priority=  1] tag=MS                        inserted=188 skipped=0
+  [priority=  1] tag=MT                        inserted=643 skipped=0
+  [priority=  1] tag=MS                        inserted=184 skipped=0
   [priority=  1] tag=MR                        inserted=188 skipped=0
-  [priority=  1] tag=MQ                        inserted=275 skipped=0
-  [priority=  1] tag=MP                        inserted=126 skipped=0
+  [priority=  1] tag=MQ                        inserted=277 skipped=0
+  [priority=  1] tag=MP                        inserted=122 skipped=0
   [priority=  1] tag=MO                        inserted=907 skipped=0
   [priority=  1] tag=MN                        inserted=575 skipped=0
   [priority=  1] tag=MM                        inserted=814 skipped=0
   [priority=  1] tag=ML                        inserted=191 skipped=0
-  [priority=  1] tag=MK                        inserted=472 skipped=0
+  [priority=  1] tag=MK                        inserted=471 skipped=0
   [priority=  1] tag=MH                        inserted=142 skipped=0
   [priority=  1] tag=MG                        inserted=265 skipped=0
-  [priority=  1] tag=MF                        inserted=164 skipped=0
+  [priority=  1] tag=MF                        inserted=162 skipped=0
   [priority=  1] tag=ME                        inserted=325 skipped=0
-  [priority=  1] tag=MD                        inserted=1978 skipped=0
-  [priority=  1] tag=MC                        inserted=373 skipped=0
+  [priority=  1] tag=MD                        inserted=1967 skipped=0
+  [priority=  1] tag=MC                        inserted=370 skipped=0
   [priority=  1] tag=MA                        inserted=702 skipped=0
   [priority=  1] tag=LY                        inserted=281 skipped=0
   [priority=  1] tag=LV                        inserted=2104 skipped=0
-  [priority=  1] tag=LU                        inserted=2545 skipped=0
-  [priority=  1] tag=LT                        inserted=5669 skipped=0
+  [priority=  1] tag=LU                        inserted=2540 skipped=0
+  [priority=  1] tag=LT                        inserted=5642 skipped=0
   [priority=  1] tag=LS                        inserted=176 skipped=0
   [priority=  1] tag=LR                        inserted=232 skipped=0
   [priority=  1] tag=LK                        inserted=2160 skipped=0
@@ -130,43 +130,43 @@ WARN: priority 1 is shared by [AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA B
   [priority=  1] tag=LC                        inserted=197 skipped=0
   [priority=  1] tag=LB                        inserted=708 skipped=0
   [priority=  1] tag=LA                        inserted=460 skipped=0
-  [priority=  1] tag=KZ                        inserted=2530 skipped=0
+  [priority=  1] tag=KZ                        inserted=2527 skipped=0
   [priority=  1] tag=KY                        inserted=281 skipped=0
   [priority=  1] tag=KW                        inserted=1159 skipped=0
-  [priority=  1] tag=KR                        inserted=5915 skipped=0
+  [priority=  1] tag=KR                        inserted=5913 skipped=0
   [priority=  1] tag=KP                        inserted=714 skipped=0
   [priority=  1] tag=KN                        inserted=235 skipped=0
   [priority=  1] tag=KM                        inserted=158 skipped=0
   [priority=  1] tag=KI                        inserted=216 skipped=0
   [priority=  1] tag=KH                        inserted=925 skipped=0
-  [priority=  1] tag=KG                        inserted=503 skipped=0
+  [priority=  1] tag=KG                        inserted=497 skipped=0
   [priority=  1] tag=KE                        inserted=1639 skipped=0
-  [priority=  1] tag=JP                        inserted=50198 skipped=0
-  [priority=  1] tag=JO                        inserted=693 skipped=0
-  [priority=  1] tag=JM                        inserted=412 skipped=0
+  [priority=  1] tag=JP                        inserted=50186 skipped=0
+  [priority=  1] tag=JO                        inserted=690 skipped=0
+  [priority=  1] tag=JM                        inserted=410 skipped=0
   [priority=  1] tag=JE                        inserted=345 skipped=0
-  [priority=  1] tag=IT                        inserted=15330 skipped=0
-  [priority=  1] tag=IS                        inserted=1048 skipped=0
-  [priority=  1] tag=IR                        inserted=2946 skipped=0
+  [priority=  1] tag=IT                        inserted=15306 skipped=0
+  [priority=  1] tag=IS                        inserted=951 skipped=0
+  [priority=  1] tag=IR                        inserted=2945 skipped=0
   [priority=  1] tag=IQ                        inserted=1811 skipped=0
   [priority=  1] tag=IO                        inserted=124 skipped=0
-  [priority=  1] tag=IN                        inserted=23552 skipped=0
+  [priority=  1] tag=IN                        inserted=23541 skipped=0
   [priority=  1] tag=IM                        inserted=451 skipped=0
-  [priority=  1] tag=IL                        inserted=4781 skipped=0
-  [priority=  1] tag=IE                        inserted=10963 skipped=0
-  [priority=  1] tag=ID                        inserted=12148 skipped=0
-  [priority=  1] tag=HU                        inserted=3138 skipped=0
+  [priority=  1] tag=IL                        inserted=4817 skipped=0
+  [priority=  1] tag=IE                        inserted=10927 skipped=0
+  [priority=  1] tag=ID                        inserted=11501 skipped=0
+  [priority=  1] tag=HU                        inserted=3133 skipped=0
   [priority=  1] tag=HT                        inserted=243 skipped=0
-  [priority=  1] tag=HR                        inserted=1316 skipped=0
+  [priority=  1] tag=HR                        inserted=1314 skipped=0
   [priority=  1] tag=HN                        inserted=759 skipped=0
   [priority=  1] tag=HM                        inserted=47 skipped=0
-  [priority=  1] tag=HK                        inserted=36997 skipped=0
+  [priority=  1] tag=HK                        inserted=36971 skipped=0
   [priority=  1] tag=GY                        inserted=184 skipped=0
   [priority=  1] tag=GW                        inserted=155 skipped=0
-  [priority=  1] tag=GU                        inserted=383 skipped=0
+  [priority=  1] tag=GU                        inserted=381 skipped=0
   [priority=  1] tag=GT                        inserted=982 skipped=0
   [priority=  1] tag=GS                        inserted=64 skipped=0
-  [priority=  1] tag=GR                        inserted=2917 skipped=0
+  [priority=  1] tag=GR                        inserted=2908 skipped=0
   [priority=  1] tag=GQ                        inserted=151 skipped=0
   [priority=  1] tag=GP                        inserted=340 skipped=0
   [priority=  1] tag=GN                        inserted=196 skipped=0
@@ -175,91 +175,91 @@ WARN: priority 1 is shared by [AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA B
   [priority=  1] tag=GI                        inserted=265 skipped=0
   [priority=  1] tag=GH                        inserted=674 skipped=0
   [priority=  1] tag=GG                        inserted=210 skipped=0
-  [priority=  1] tag=GF                        inserted=227 skipped=0
-  [priority=  1] tag=GE                        inserted=930 skipped=0
+  [priority=  1] tag=GF                        inserted=226 skipped=0
+  [priority=  1] tag=GE                        inserted=950 skipped=0
   [priority=  1] tag=GD                        inserted=218 skipped=0
-  [priority=  1] tag=GB                        inserted=74219 skipped=0
+  [priority=  1] tag=GB                        inserted=74331 skipped=0
   [priority=  1] tag=GA                        inserted=223 skipped=0
-  [priority=  1] tag=FR                        inserted=42660 skipped=0
+  [priority=  1] tag=FR                        inserted=42585 skipped=0
   [priority=  1] tag=FO                        inserted=133 skipped=0
   [priority=  1] tag=FM                        inserted=179 skipped=0
   [priority=  1] tag=FK                        inserted=129 skipped=0
   [priority=  1] tag=FJ                        inserted=246 skipped=0
-  [priority=  1] tag=FI                        inserted=26012 skipped=0
+  [priority=  1] tag=FI                        inserted=26638 skipped=0
   [priority=  1] tag=ET                        inserted=218 skipped=0
-  [priority=  1] tag=ES                        inserted=18785 skipped=0
+  [priority=  1] tag=ES                        inserted=18735 skipped=0
   [priority=  1] tag=ER                        inserted=148 skipped=0
   [priority=  1] tag=EH                        inserted=59 skipped=0
-  [priority=  1] tag=EG                        inserted=1213 skipped=0
-  [priority=  1] tag=EE                        inserted=2380 skipped=0
-  [priority=  1] tag=EC                        inserted=1684 skipped=0
-  [priority=  1] tag=DZ                        inserted=486 skipped=0
+  [priority=  1] tag=EG                        inserted=1212 skipped=0
+  [priority=  1] tag=EE                        inserted=2390 skipped=0
+  [priority=  1] tag=EC                        inserted=1676 skipped=0
+  [priority=  1] tag=DZ                        inserted=480 skipped=0
   [priority=  1] tag=DO                        inserted=1420 skipped=0
-  [priority=  1] tag=DM                        inserted=206 skipped=0
-  [priority=  1] tag=DK                        inserted=5492 skipped=0
+  [priority=  1] tag=DM                        inserted=203 skipped=0
+  [priority=  1] tag=DK                        inserted=5484 skipped=0
   [priority=  1] tag=DJ                        inserted=300 skipped=0
-  [priority=  1] tag=DE                        inserted=75032 skipped=0
-  [priority=  1] tag=CZ                        inserted=6649 skipped=0
-  [priority=  1] tag=CY                        inserted=1913 skipped=0
+  [priority=  1] tag=DE                        inserted=74817 skipped=0
+  [priority=  1] tag=CZ                        inserted=6665 skipped=0
+  [priority=  1] tag=CY                        inserted=1920 skipped=0
   [priority=  1] tag=CX                        inserted=89 skipped=0
   [priority=  1] tag=CW                        inserted=268 skipped=0
   [priority=  1] tag=CV                        inserted=245 skipped=0
   [priority=  1] tag=CU                        inserted=218 skipped=0
-  [priority=  1] tag=CR                        inserted=1091 skipped=0
+  [priority=  1] tag=CR                        inserted=1088 skipped=0
   [priority=  1] tag=CO                        inserted=4842 skipped=0
   [priority=  1] tag=CM                        inserted=373 skipped=0
-  [priority=  1] tag=CL                        inserted=10918 skipped=0
+  [priority=  1] tag=CL                        inserted=10913 skipped=0
   [priority=  1] tag=CK                        inserted=133 skipped=0
-  [priority=  1] tag=CI                        inserted=549 skipped=0
-  [priority=  1] tag=CH                        inserted=57869 skipped=0
+  [priority=  1] tag=CI                        inserted=546 skipped=0
+  [priority=  1] tag=CH                        inserted=57956 skipped=0
   [priority=  1] tag=CG                        inserted=227 skipped=0
   [priority=  1] tag=CF                        inserted=159 skipped=0
   [priority=  1] tag=CD                        inserted=457 skipped=0
   [priority=  1] tag=CC                        inserted=61 skipped=0
-  [priority=  1] tag=CA                        inserted=55510 skipped=0
+  [priority=  1] tag=CA                        inserted=55223 skipped=0
   [priority=  1] tag=BZ                        inserted=472 skipped=0
   [priority=  1] tag=BY                        inserted=814 skipped=0
   [priority=  1] tag=BW                        inserted=289 skipped=0
   [priority=  1] tag=BV                        inserted=55 skipped=0
   [priority=  1] tag=BT                        inserted=302 skipped=0
-  [priority=  1] tag=BS                        inserted=368 skipped=0
-  [priority=  1] tag=BR                        inserted=26483 skipped=0
+  [priority=  1] tag=BS                        inserted=365 skipped=0
+  [priority=  1] tag=BR                        inserted=26308 skipped=0
   [priority=  1] tag=BQ                        inserted=121 skipped=0
-  [priority=  1] tag=BO                        inserted=657 skipped=0
-  [priority=  1] tag=BN                        inserted=242 skipped=0
+  [priority=  1] tag=BO                        inserted=656 skipped=0
+  [priority=  1] tag=BN                        inserted=240 skipped=0
   [priority=  1] tag=BM                        inserted=427 skipped=0
-  [priority=  1] tag=BL                        inserted=126 skipped=0
+  [priority=  1] tag=BL                        inserted=122 skipped=0
   [priority=  1] tag=BJ                        inserted=204 skipped=0
   [priority=  1] tag=BI                        inserted=164 skipped=0
   [priority=  1] tag=BH                        inserted=585 skipped=0
-  [priority=  1] tag=BG                        inserted=4350 skipped=0
+  [priority=  1] tag=BG                        inserted=3752 skipped=0
   [priority=  1] tag=BF                        inserted=277 skipped=0
-  [priority=  1] tag=BE                        inserted=81978 skipped=0
-  [priority=  1] tag=BD                        inserted=5039 skipped=0
-  [priority=  1] tag=BB                        inserted=329 skipped=0
-  [priority=  1] tag=BA                        inserted=568 skipped=0
+  [priority=  1] tag=BE                        inserted=81803 skipped=0
+  [priority=  1] tag=BD                        inserted=5014 skipped=0
+  [priority=  1] tag=BB                        inserted=327 skipped=0
+  [priority=  1] tag=BA                        inserted=570 skipped=0
   [priority=  1] tag=AZ                        inserted=808 skipped=0
   [priority=  1] tag=AX                        inserted=197 skipped=0
-  [priority=  1] tag=AW                        inserted=176 skipped=0
-  [priority=  1] tag=AU                        inserted=83703 skipped=0
-  [priority=  1] tag=AT                        inserted=8239 skipped=0
+  [priority=  1] tag=AW                        inserted=174 skipped=0
+  [priority=  1] tag=AU                        inserted=83543 skipped=0
+  [priority=  1] tag=AT                        inserted=8169 skipped=0
   [priority=  1] tag=AS                        inserted=482 skipped=0
-  [priority=  1] tag=AR                        inserted=6438 skipped=0
+  [priority=  1] tag=AR                        inserted=6458 skipped=0
   [priority=  1] tag=AQ                        inserted=1068 skipped=0
   [priority=  1] tag=AO                        inserted=624 skipped=0
   [priority=  1] tag=AM                        inserted=902 skipped=0
   [priority=  1] tag=AL                        inserted=1775 skipped=0
-  [priority=  1] tag=AI                        inserted=187 skipped=0
-  [priority=  1] tag=AG                        inserted=325 skipped=0
-  [priority=  1] tag=AF                        inserted=857 skipped=0
-  [priority=  1] tag=AE                        inserted=6643 skipped=0
+  [priority=  1] tag=AI                        inserted=181 skipped=0
+  [priority=  1] tag=AG                        inserted=328 skipped=0
+  [priority=  1] tag=AF                        inserted=856 skipped=0
+  [priority=  1] tag=AE                        inserted=6674 skipped=0
   [priority= 70] tag=FASTLY                    inserted=90 skipped=0
-  [priority= 75] tag=CLOUDFLARE                inserted=712 skipped=0
+  [priority= 75] tag=CLOUDFLARE                inserted=716 skipped=0
   [priority= 76] tag=CLOUDFRONT                inserted=211 skipped=0
   [priority= 80] tag=TELEGRAM                  inserted=12 skipped=0
   [priority= 90] tag=RE-FILTER                 inserted=24961 skipped=0
   [priority=100] tag=RU-WHITELIST              inserted=30222 skipped=0
 done → ./output/geoip-country.mmdb
 ---
-mmdb size: 10387486 bytes
-Build finished: 2026-09-26 04:06:46 UTC
+mmdb size: 10386464 bytes
+Build finished: 2026-09-26 16:00:55 UTC
